@@ -30,7 +30,7 @@ class republica{
     }
 
     public function setNome($value){
-        $this->r_name = $value;
+        $this->r_nome = $value;
     }
 
     public function setSite($value){
