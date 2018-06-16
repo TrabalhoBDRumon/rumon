@@ -19,6 +19,7 @@ img {
 	max-width: 100%;
 }
 
+
 h1,
 h2,
 h3,
@@ -111,24 +112,21 @@ ul {
 	text-align: center;
 	margin-bottom: 90px;
 	padding-top: 50px;
-	position: relative;
 }
 
 .section-title h2 {
-	text-transform: uppercase;
+	
 	color: #fff;
 	font-weight: 400;
 }
 
 .section-title h2 span {
-	background: #2be6ab;
+	background: #ffffff;
 	padding: 0 3px 5px;
-	display: inline-block;
 	color: #0b1033;
 }
 
 .section-title:after {
-	content: "";
 	position: absolute;
 	left: 50%;
 	top: 0;
@@ -140,6 +138,7 @@ ul {
 
 .section-title.left {
 	text-align: left;
+        color: #ffffff;
 }
 
 .section-title.left:after {
@@ -779,6 +778,18 @@ ul {
 	outline: none;
 }
 
+.form-class input[type="date"] {
+	width: 100%;
+	margin-bottom: 26px;
+	border: none;
+	background: #f6edfb;
+	padding: 17px 20px;
+}
+
+.form-class input[type="date"]:focus,
+.form-class input[type="date"]:hover {
+	outline: none;
+
 .form-class textarea {
 	width: 100%;
 	margin-bottom: 40px;
@@ -1417,6 +1428,8 @@ ul {
 	padding-top: 15px;
 }
 
+
+
 .site-accordions .panel.active .panel-heading {
 	background: #2be6ab;
 	color: #6a23b5;
@@ -1444,6 +1457,7 @@ ul {
 	    -ms-transform: rotate(90deg);
 	        transform: rotate(90deg);
 }
+td{color:#ffffff;}
 
 .circle-progress .progress-info {
 	position: absolute;
