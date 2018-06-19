@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <title>Rumon</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="description" content="Labs - Design Studio">
     <meta name="keywords" content="lab, onepage, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,24 +60,61 @@
     <!-- Contact section -->
     <div class="contact-section spad fix">
         <div class="container">
-            <div class="row">
+            
+            <div class="col-md-12">
                 <!-- contact info -->
-                <div class="col-md-5 col-md-offset-1 contact-info col-push">
+                <div class="col-md-6">
                     <div class="section-title left">
-                        <h2>Contact us</h2>
+                        <h1>Pesquisa Patrmônio</h1>
                     </div>
-                    <p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
-                    <h3 class="mt60">Main Office</h3>
-                    <p class="con-item">C/ Libertad, 34 <br> 05200 ArÃ©valo </p>
-                    <p class="con-item">0034 37483 2445 322</p>
-                    <p class="con-item">hello@company.com</p>
+                    
+                    <form class="form-class" id="con_form">
+                        
+                            
+                            <h2>Digite o nome:</h2><br>
+                               
+                                <input type="text" name="pesquisarnomepatrimonio" class="col-md-3">
+                            
+                            <div class="text-right">
+                                <button class="site-btn" name="botaopesquisarpatrimonio">Pesquisar</button>
+                            </div>
+                        
+                    </form>
+                    
+                    
+                    <table class="table" style="background-color: white;">
+                      <thead>
+                        <tr>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>Mary</td>
+                          <td>Moe</td>
+                          <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>July</td>
+                          <td>Dooley</td>
+                          <td>july@example.com</td>
+                        </tr>
+                      </tbody>
+                    </table>
                 </div>
                 <!-- contact form -->
-                <div class="col-md-6 col-pull ">
+                <div class="col-md-6">
                     <form class="form-class" id="con_form">
                         <div class="row">
                             <div class="section-title left"><h1>Cadastro de Patrimonio</h1></div>
-                            <h2>Nome:</h2><div class="col-sm-6">
+                            <h2>Nome:</h2><div class="">
                                 <input type="text" name="nomepatrimonio">
                             <h2>Descrição:</h2>
                                 <textarea name="descpatrimonio"></textarea>

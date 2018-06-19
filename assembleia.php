@@ -59,10 +59,11 @@
 
     <!-- Contact section -->
     <div class="contact-section spad fix">
-        <div class="container">
-            <div class="row">
+                    <div class="container">
+
+        <div class="col-md-12">
                 <!-- contact info -->
-                <div class="col-md-5 col-md-offset-1 contact-info col-push">
+                <div class="col-md-6">
                     <div class="section-title left">
                         <h1>Pesquisa de presença </h1>
                     </div>
@@ -74,40 +75,44 @@
                         <option>3</option>
                     </select>
                     <br><br>
-                    <table class = "table">
-                         <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Nome</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jacob</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>Larry</td>
-                            </tr>
-                          </tbody>
-
+                    
+                    <table class="table" style="background-color: white;">
+                      <thead>
+                        <tr>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>Mary</td>
+                          <td>Moe</td>
+                          <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>July</td>
+                          <td>Dooley</td>
+                          <td>july@example.com</td>
+                        </tr>
+                      </tbody>
                     </table>
                 </div>
                 <!-- contact form -->
-                <div class="col-md-6 col-pull">
+                <div class="col-md-6">
                     <form class="form-class" id="con_form">
                         <div class="row">
                             <div class="section-title left"> <h1>Cadastro de Assembleia</h1></div>
-                            <h2>Data:</h2><br><div class="col-sm-6">
+                            <h2>Data:</h2><br><div class="">
                                
                                 <input type="date" name="data_assembleia">
                             </div>
-                            <div class="col-sm-12">
+                            <div class="">
                                 <button class="site-btn" name="cadastroassembleia">Cadastrar</button>
                             </div>
                         </div>
