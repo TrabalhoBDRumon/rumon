@@ -76,16 +76,16 @@
                 <div class="col-md-6 col-pull ">
                     <form class="form-class" id="con_form">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <input type="text" name="name" placeholder="Your name">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" name="email" placeholder="Your email">
-                            </div>
-                            <div class="col-sm-12">
-                                <input type="text" name="subject" placeholder="Subject">
-                                <textarea name="message" placeholder="Message"></textarea>
-                                <button class="site-btn">send</button>
+                            <div class="section-title left"><h1>Cadastro de Patrimonio</h1></div>
+                            <h2>Nome:</h2><div class="col-sm-6">
+                                <input type="text" name="nomepatrimonio">
+                            <h2>Descrição:</h2>
+                                <textarea name="descpatrimonio"></textarea>
+                            <h2>Valor:</h2>
+                                <input type="text" name="valorpatrimonio">
+                            <h2>Multa:</h2>
+                                <input type="text" name="multapatrimonio">
+                                <button class="site-btn" name="cadastrarpatrimonio">Cadastrar</button>
                             </div>
                         </div>
                     </form>
