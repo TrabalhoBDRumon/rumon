@@ -15,7 +15,7 @@ class pessoa{
     private $p_tipo;
     private $p_carteirinha;
     private $p_nasciento;
-    private $p_celular
+    private $p_celular;
     private $p_apelido;
     private $p_faculdade;
 
