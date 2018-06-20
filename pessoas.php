@@ -56,43 +56,98 @@
 	<!-- Header section end -->
         <br><br><br>
 
-	<!-- Contact section -->
-	<div class="contact-section spad fix">
-		<div class="container">
-			<div class="row">
-				<!-- contact info -->
-				<div class="col-md-5 col-md-offset-1 contact-info col-push">
-					<div class="section-title left">
-						<h2>Contact us</h2>
-					</div>
-					<p>Cras ex mauris, ornare eget pretium sit amet, dignissim et turpis. Nunc nec maximus dui, vel suscipit dolor. Donec elementum velit a orci facilisis rutrum. </p>
-					<h3 class="mt60">Main Office</h3>
-					<p class="con-item">C/ Libertad, 34 <br> 05200 ArÃ©valo </p>
-					<p class="con-item">0034 37483 2445 322</p>
-					<p class="con-item">hello@company.com</p>
-				</div>
-				<!-- contact form -->
-				<div class="col-md-6 col-pull">
-					<form class="form-class" id="con_form">
-						<div class="row">
-							<div class="col-sm-6">
-								<input type="text" name="name" placeholder="Your name">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="email" placeholder="Your email">
-							</div>
-							<div class="col-sm-12">
-								<input type="text" name="subject" placeholder="Subject">
-								<textarea name="message" placeholder="Message"></textarea>
-								<button class="site-btn">send</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Contact section end-->
+	 <!-- Contact section -->
+    <div class="contact-section spad fix">
+        <div class="container">
+            
+            <div class="col-md-12">
+                <!-- contact info -->
+                <div class="col-md-6">
+                    <div class="section-title left">
+                        <h1>Pesquisa Pessoa</h1>
+                    </div>
+                    
+                    <form class="form-class" id="con_form">
+                        
+                            
+                            <h2>Digite o nome:</h2><br>
+                               
+                                <input type="text" name="pesquisarnomepessoa" class="col-md-3">
+                            
+                            <div class="text-right">
+                                <button class="site-btn" name="botaopesquisarpessoa">Pesquisar</button>
+                            </div>
+                        
+                    </form>
+                    
+                    
+                    <table class="table" style="background-color: white;">
+                      <thead>
+                        <tr>
+                          <th>Firstname</th>
+                          <th>Lastname</th>
+                          <th>Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>John</td>
+                          <td>Doe</td>
+                          <td>john@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>Mary</td>
+                          <td>Moe</td>
+                          <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                          <td>July</td>
+                          <td>Dooley</td>
+                          <td>july@example.com</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <!-- contact form -->
+                <div class="col-md-6">
+                    <form class="form-class" id="con_form">
+                        <div class="row">
+                            <div class="section-title left"><h1>Cadastro de Pessoa</h1></div>
+                            <h2>CPF:</h2>
+                                <input type="text" name="cpfpessoa">
+                            <h2>RG:</h2>
+                                <input type="text" name="rgpessoa">
+                            <h2>Nome:</h2>
+                                <input type="text" name="nomepessoa">
+                            <h2>Tipo(Calouro/Morador/Decano):</h2>
+                                <input type="text" name="tipopessoa">
+                            <h2>Carteirinha</h2>
+                                <input type="text" name="tipopessoa">
+                            <h2>Data:</h2>
+                            <input type="date" name="nascpessoa">
+                            <h2>Celular:</h2>
+                                <input type="text" name="celpessoa">
+                            <h2>Apelido:</h2>
+                                <input type="text" name="apelidopessoa">
+                            <h2>Faculdade</h2>
+                                <input type="text" name="facupessoa">
+                                
+                                <select id="reppessoa">
+                                    <option>República:</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                                
+                                <button class="site-btn" name="cadastrarpessoa">Cadastrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Contact section end-->
 
 
 	<!-- Footer section -->
