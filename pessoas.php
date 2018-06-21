@@ -16,10 +16,10 @@ if (isset($_POST['cadastrarpessoa'])) {
     $pessoa->setCelular($_POST['celpessoa']);
     $pessoa->setApelido($_POST['apelidopessoa']);
     $pessoa->setFaculdade($_POST['facupessoa']);
-    $pessoa->setRepID($_POST['rep_id']);
+    $pessoa->setRepID((int)$_POST['rep_id']);
     $pessoa->insert();
-    echo 'foi';
-    exit();
+
+    $result = $pessoa->insert();
 }
 ?>
 
@@ -71,36 +71,37 @@ if (isset($_POST['cadastrarpessoa'])) {
             <nav>
                 <ul class="menu-list">
                     <li><a href="home.html">Home</a></li>
-                    <li><a href="rep.php">República</a></li>
+                    <li><a href="rep.php">Repï¿½blica</a></li>
                     <li class="active"><a href="pessoas.php">Pessoas</a></li>
                     <li><a href="assembleia.php">Assembleia</a></li>
-                    <li><a href="patrimonio.php">Patrimônio</a></li>
+                    <li><a href="patrimonio.php">Patrimï¿½nio</a></li>
                 </ul>
             </nav>
         </header>
         <!-- Header section end -->
         <br><br><br>
 
-        <?php
-        if (isset($result)) {
-            ?>
-            <div class="alert alert-success">
-                <?php echo $result; ?>
-            </div>
-            <?php
-        } else if (isset($error)) {
-            ?>
-            <div class="alert alert-danger">
-                <?php echo $error; ?>
-            </div>
-            <?php
-        }
-        ?>
+
 
         <!-- Contact section -->
         <div class="contact-section spad fix">
             <div class="container">
 
+                <?php
+                if (isset($result)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <?php echo 'Pessoa Cadastrada com Sucesso!'; ?>
+                    </div>
+                    <?php
+                } else if (isset($error)) {
+                    ?>
+                    <div class="alert alert-danger">
+                        <?php echo $error; ?>
+                    </div>
+                    <?php
+                }
+                ?>
                 <div class="col-md-12">
                     <!-- contact info -->
                     <div class="col-md-6">
@@ -174,8 +175,8 @@ if (isset($_POST['cadastrarpessoa'])) {
                                 <input type="text" name="facupessoa">
 
                                 <select id="reppessoa" name="rep_id">
-                                    <option>República:</option>
-                                    <option>1</option>
+                                    <option>RepÃºblica:</option>
+                                    <option value="1">Erva Doce</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>

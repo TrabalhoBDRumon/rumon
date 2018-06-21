@@ -78,7 +78,7 @@ class Pessoa{
             $stmt->bindParam(":p_celular", $this->p_celular);
             $stmt->bindParam(":p_apelido", $this->p_apelido);
             $stmt->bindParam(":p_faculdade", $this->p_faculdade);
-            $stmt->bindParam(":rep_id", $this->rep_id);
+            $stmt->bindParam(":rep_id", $this->rep_id, PDO::PARAM_INT);
             $stmt->execute();
             return 1;
         }catch(PDOException $e){
