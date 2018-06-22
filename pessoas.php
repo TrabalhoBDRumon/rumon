@@ -116,7 +116,7 @@ if (isset($_POST['cadastrarpessoa'])) {
 
                             <h2>Digite o apelido:</h2><br>
 
-                            <input type="text" name="pesquisarnomepessoa" class="col-md-3">
+                            <input type="text" name="nomepessoa" class="col-md-3">
 
                             <div class="text-right">
                                 <button class="site-btn" name="botaopesquisarpessoa">Pesquisar</button>
@@ -135,13 +135,15 @@ if (isset($_POST['cadastrarpessoa'])) {
                             </thead>
                             <tbody>
                                 <?php
-                                    $apelido = $_GET['pesquisarnomepessoa'];
-                                    $pessoas = $pessoa->buscaPessoa($apelido);
-                                    foreach($pessoas as $p){
-                                        echo "<tr>";
-                                        echo "<td>$p->p_apelido</td>";
-                                        echo "<td>$p->p_nome</td>";
-                                        echo "<td>$p->p_celular</td>";
+                                    if(isset($_GET['nomepessoa'])){
+                                        $apelido = $_GET['nomepessoa'];
+                                        $pessoas = $pessoa->buscaPessoa($apelido);
+                                        foreach($pessoas as $p){
+                                            echo "<tr>";
+                                            echo "<td>$p->p_apelido</td>";
+                                            echo "<td>$p->p_nome</td>";
+                                            echo "<td>$p->p_celular</td>";
+                                        }
                                     }
                                 ?>
                             </tbody>
