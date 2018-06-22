@@ -103,7 +103,7 @@ class Republica{
     }
 
     public function view(){
-        $stmt = $this->conn->query("SELECT r_nome FROM republica");
+        $stmt = $this->conn->query("SELECT r_nome, r_id FROM republica");
         $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;
     }

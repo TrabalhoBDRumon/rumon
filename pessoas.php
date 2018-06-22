@@ -186,7 +186,7 @@ if (isset($_POST['cadastrarpessoa'])) {
                                     $republica = new Republica();
                                     $reps = $republica->view();
                                     foreach($reps as $rep){
-                                        echo "<option>".$rep->r_nome."</option>";
+                                        echo '<option value="'.$rep->r_id.'">'.$rep->r_nome.'</option>';
                                     }
                                     ?>
                                 </select><br />
