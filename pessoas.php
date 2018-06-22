@@ -73,10 +73,10 @@ if (isset($_POST['cadastrarpessoa'])) {
             <nav>
                 <ul class="menu-list">
                     <li><a href="home.html">Home</a></li>
-                    <li><a href="rep.php">Rep�blica</a></li>
+                    <li><a href="rep.php">República</a></li>
                     <li class="active"><a href="pessoas.php">Pessoas</a></li>
                     <li><a href="assembleia.php">Assembleia</a></li>
-                    <li><a href="patrimonio.php">Patrim�nio</a></li>
+                    <li><a href="patrimonio.php">Patrimônio</a></li>
                 </ul>
             </nav>
         </header>
@@ -114,7 +114,7 @@ if (isset($_POST['cadastrarpessoa'])) {
                         <form class="form-class" id="con_form">
 
 
-                            <h2>Digite o nome:</h2><br>
+                            <h2>Digite o apelido:</h2><br>
 
                             <input type="text" name="pesquisarnomepessoa" class="col-md-3">
 
@@ -128,27 +128,22 @@ if (isset($_POST['cadastrarpessoa'])) {
                         <table class="table" style="background-color: white;">
                             <thead>
                                 <tr>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Email</th>
+                                    <th>Apelido</th>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                </tr>
-                                <tr>
-                                    <td>July</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                </tr>
+                                <?php
+                                    $apelido = $_GET['pesquisarnomepessoa'];
+                                    $pessoas = $pessoa->buscaPessoa($apelido);
+                                    foreach($pessoas as $p){
+                                        echo "<tr>";
+                                        echo "<td>$p->p_apelido</td>";
+                                        echo "<td>$p->p_nome</td>";
+                                        echo "<td>$p->p_celular</td>";
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -182,12 +177,12 @@ if (isset($_POST['cadastrarpessoa'])) {
 
                                 <select id="reppessoa" name="rep_id">
                                     <?php
-                                    echo '<option>República:</option>';
-                                    $republica = new Republica();
-                                    $reps = $republica->view();
-                                    foreach($reps as $rep){
-                                        echo '<option value="'.$rep->r_id.'">'.$rep->r_nome.'</option>';
-                                    }
+                                        echo '<option>República:</option>';
+                                        $republica = new Republica();
+                                        $reps = $republica->view();
+                                        foreach($reps as $rep){
+                                            echo '<option value="'.$rep->r_id.'">'.$rep->r_nome.'</option>';
+                                        }
                                     ?>
                                 </select><br />
 

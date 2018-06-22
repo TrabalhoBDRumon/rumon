@@ -121,6 +121,13 @@ class Pessoa{
         return $row;
     }
 
+    public function buscaPessoa($apelido){
+        $stmt = $this->conn->query("SELECT p_nome, p_apelido, p_celular FROM pessoa WHERE p_apelido = '".$apelido."'");
+        $stmt->bindParam(":p_apelido", $apelido);
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $row;
+    }
+
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `pessoa` WHERE 1");
         $stmt->execute();
