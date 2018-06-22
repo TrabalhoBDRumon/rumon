@@ -117,7 +117,7 @@ class Pessoa{
     public function view(){
         $stmt = $this->conn->prepare("SELECT * FROM `pessoa`  WHERE `p_id` = :p_id");
         $stmt->bindParam(":p_id", $this->p_id);
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;
     }
 

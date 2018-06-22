@@ -1,8 +1,10 @@
 <?php
 
 use Rumon\Database\Pessoa;
+use Rumon\Database\Republica;
 
 require_once 'adm/ClassPessoa.php';
+require_once 'adm/ClassRepublica.php';
 
 $pessoa = new Pessoa();
 
@@ -161,8 +163,12 @@ if (isset($_POST['cadastrarpessoa'])) {
                                 <input type="text" name="rgpessoa">
                                 <h2>Nome:</h2>
                                 <input type="text" name="nomepessoa">
-                                <h2>Tipo(Calouro/Morador/Decano):</h2>
-                                <input type="text" name="tipopessoa">
+                                <h2>Tipo(Calouro/Morador/Decano):</h2><br />
+                                <select required name="tipopessoa">
+                                    <option value="1">Calouro</option>
+                                    <option value="2">Morador</option>
+                                    <option value="3">Decano</option>
+                                </select><br />
                                 <h2>Carteirinha</h2>
                                 <input type="text" name="carteirinhapessoa">
                                 <h2>Data:</h2>
@@ -175,11 +181,15 @@ if (isset($_POST['cadastrarpessoa'])) {
                                 <input type="text" name="facupessoa">
 
                                 <select id="reppessoa" name="rep_id">
-                                    <option>República:</option>
-                                    <option value="1">Erva Doce</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
+                                    <?php
+                                    echo '<option>República:</option>';
+                                    $republica = new Republica();
+                                    $reps = $republica->view();
+                                    foreach($reps as $rep){
+                                        echo "<option>".$rep->r_nome."</option>";
+                                    }
+                                    ?>
+                                </select><br />
 
                                 <button class="site-btn" name="cadastrarpessoa">Cadastrar</button>  
                         </form>

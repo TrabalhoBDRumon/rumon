@@ -7,7 +7,7 @@ use \PDOException;
 
 require_once "Database.php";
 
-class republica{
+class Republica{
     private $r_id;
     private $r_nome;
     private $r_site;
@@ -103,11 +103,11 @@ class republica{
     }
 
     public function view(){
-        $stmt = $this->conn->prepare("SELECT * FROM `republica`  WHERE `r_id` = :r_id");
-        $stmt->bindParam(":r_id", $this->r_id);
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        $stmt = $this->conn->query("SELECT r_nome FROM republica");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;
     }
+
 
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `republica` WHERE 1");
