@@ -1,3 +1,26 @@
+<?php
+
+use Rumon\Database\Republica;
+
+require_once 'adm/ClassRepublica.php';
+
+$rep = new Republica();
+
+
+if (isset($_POST['cadastrarrep'])) {
+    $rep->setNome($_POST['nomerep']);
+    $rep->setSite($_POST['siterep']);
+    $rep->setFundacao($_POST['fundacaorep']);
+    $rep->setEmail($_POST['emailrep']);
+    $rep->setTipo($_POST['tiporep']);
+    $rep->setFacebook($_POST['facerep']);
+    $rep->setTelefone($_POST['telrep']);
+    $rep->insert();
+
+    $result = $rep->insert();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,10 +69,10 @@
 		<nav>
 			<ul class="menu-list">
 				<li><a href="home.html">Home</a></li>
-				<li class="active"><a href="rep.php">República</a></li>
+				<li class="active"><a href="rep.php">RepÃºblica</a></li>
 				<li><a href="pessoas.php">Pessoas</a></li>
 				<li><a href="assembleia.php">Assembleia</a></li>
-				<li><a href="patrimonio.php">Patrimônio</a></li>
+				<li><a href="patrimonio.php">PatrimÃ´nio</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -57,12 +80,27 @@
         <br><br><br>
 	<div class="contact-section spad fix">
         <div class="container">
+            <?php
+            if (isset($result)) {
+                ?>
+                <div class="alert alert-success">
+                    <?php echo 'RepÃºblica Cadastrada com Sucesso!'; ?>
+                </div>
+                <?php
+            } else if (isset($error)) {
+                ?>
+                <div class="alert alert-danger">
+                    <?php echo $error; ?>
+                </div>
+                <?php
+            }
+            ?>
             
             <div class="col-md-12">
                 <!-- contact info -->
                 <div class="col-md-6">
                     <div class="section-title left">
-                        <h1>Pesquisa República</h1>
+                        <h1>Pesquisa RepÃºblica</h1>
                     </div>
                     
                     <form class="form-class" id="con_form">
@@ -108,17 +146,19 @@
                 </div>
                 <!-- contact form -->
                 <div class="col-md-6">
-                    <form class="form-class" id="con_form">
+                    <form class="form-class" id="con_form" method="post">
                         <div class="row">
-                            <div class="section-title left"><h1>Cadastro de República</h1></div>
+                            <div class="section-title left"><h1>Cadastro de RepÃºblica</h1></div>
                             <h2>Nome:</h2><div class="">
                                 <input type="text" name="nomerep">
                             <h2>Site:</h2><div class="">
                                 <input type="text" name="siterep">
-                            <h2>Data de Fundação:</h2>
+                            <h2>Data de FundaÃ§Ã£o:</h2>
                                 <input type="date" name="fundacaorep">
+                            <h2>Email:</h2>
+                                    <input type="text" name="emailrep">
                             <h2>Tipo:</h2>
-                                <input type="text" name="tiporep">
+                                    <input type="text" name="tiporep">
                             <h2>Facebook:</h2>
                                 <input type="text" name="facerep">
                             <h2>Telefone:</h2>
