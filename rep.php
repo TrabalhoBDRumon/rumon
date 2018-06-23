@@ -1,9 +1,28 @@
 <?php
 
 use Rumon\Database\Republica;
+use Rumon\Database\Pessoa;
 
 require_once 'adm/ClassRepublica.php';
+require_once 'adm/ClassPessoa.php';
 
+function generoRep($idTipo){
+
+    switch($idTipo){
+        case 1:
+            $genero = "Masculina";
+            break;
+        case 2:
+            $genero = "Feminina";
+            break;
+        case 3:
+            $genero = "Mista";
+            break;
+        default:
+            break;    
+    }
+    return $genero;
+}
 $rep = new Republica();
 
 
@@ -108,7 +127,7 @@ if (isset($_POST['cadastrarrep'])) {
                             
                             <h2>Digite o nome:</h2><br>
                                
-                                <input type="text" name="pesquisarnomerep" class="col-md-3">
+                                <input type="text" name="nomerep" class="col-md-3">
                             
                             <div class="text-right">
                                 <button class="site-btn" name="botaopesquisarrep">Pesquisar</button>
@@ -120,29 +139,48 @@ if (isset($_POST['cadastrarrep'])) {
                     <table class="table" style="background-color: white;">
                       <thead>
                         <tr>
-                          <th>Firstname</th>
-                          <th>Lastname</th>
-                          <th>Email</th>
+                          <th>Nome</th>
+                          <th>Tipo</th>
+                          <th>Telefone</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>John</td>
-                          <td>Doe</td>
-                          <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>Mary</td>
-                          <td>Moe</td>
-                          <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>July</td>
-                          <td>Dooley</td>
-                          <td>july@example.com</td>
-                        </tr>
+                      <tr>
+                      <?php
+                        if(isset($_GET['nomerep'])){
+                            $nomeRepublica = $_GET['nomerep'];
+                            $reps = $rep->buscaRep($nomeRepublica);
+                            foreach($reps as $r){
+                                echo "<td>$r->r_nome</td>";
+                                echo "<td>".generoRep($r->r_tipo)."</td>";
+                                echo "<td>$r->r_telefone</td>";
+                                echo "</tr>";
+                                echo "</tbody>";
+                                $pessoa = new Pessoa();
+                                $moradores = $pessoa->moraRepublica($r->r_id);
+                                echo "</table>";
+                                echo '<table class="table" style="background-color: white;">';
+                                echo "<thead>";
+                                echo "<tr>";
+                                echo "<th>Apelido</th>";
+                                echo "<th>Nome</th>";
+                                echo "<th>Celular</th>";
+                                echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                foreach($moradores as $morador){
+                                    echo "<tr>";
+                                    echo "<td>$morador->p_apelido</td>";
+                                    echo "<td>$morador->p_nome</td>";
+                                    echo "<td>$morador->p_celular</td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            
+                        }
+                      ?>
                       </tbody>
-                    </table>
+                      </table>
                 </div>
                 <!-- contact form -->
                 <div class="col-md-6">
