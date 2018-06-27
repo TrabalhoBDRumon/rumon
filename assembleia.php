@@ -1,3 +1,17 @@
+<?php
+
+use Rumon\Database\Assembleia;
+
+require_once 'adm/ClassAssembleia.php';
+
+$assem = new Assembleia();
+
+if(isset($_POST['cadastroassembleia'])){
+    $assem->setData($_POST['dataassembleia']);
+    $assem->insert();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +60,10 @@
 		<nav>
 			<ul class="menu-list">
 				<li><a href="home.html">Home</a></li>
-				<li><a href="rep.php">República</a></li>
+				<li><a href="rep.php">RepÃºblica</a></li>
 				<li><a href="pessoas.php">Pessoas</a></li>
 				<li class="active"><a href="assembleia.php">Assembleia</a></li>
-				<li><a href="patrimonio.php">Patrimônio</a></li>
+				<li><a href="patrimonio.php">PatrimÃ´nio</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -65,7 +79,7 @@
                 <!-- contact info -->
                 <div class="col-md-6">
                     <div class="section-title left">
-                        <h1>Pesquisa de presença </h1>
+                        <h1>Pesquisa de presenÃ§a </h1>
                     </div>
                     
                     <select id="assembleia">
@@ -105,12 +119,12 @@
                 </div>
                 <!-- contact form -->
                 <div class="col-md-6">
-                    <form class="form-class" id="con_form">
+                    <form class="form-class" id="con_form" method="post">
                         <div class="row">
                             <div class="section-title left"> <h1>Cadastro de Assembleia</h1></div>
                             <h2>Data:</h2><br><div class="">
                                
-                                <input type="date" name="data_assembleia">
+                                <input type="date" name="dataassembleia">
                             </div>
                             <div class="">
                                 <button class="site-btn" name="cadastroassembleia">Cadastrar</button>
