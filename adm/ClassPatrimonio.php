@@ -7,7 +7,7 @@ use \PDOException;
 
 require_once "Database.php";
 
-class patrimonio{
+class Patrimonio{
     private $patri_id;
     private $patri_nome;
     private $patri_descricao;

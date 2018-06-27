@@ -9,6 +9,8 @@ $assem = new Assembleia();
 if(isset($_POST['cadastroassembleia'])){
     $assem->setData($_POST['dataassembleia']);
     $assem->insert();
+
+    $result = $assem->insert();
 }
 
 ?>
@@ -74,6 +76,22 @@ if(isset($_POST['cadastroassembleia'])){
     <!-- Contact section -->
     <div class="contact-section spad fix">
                     <div class="container">
+
+                        <?php
+                if (isset($result)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <?php echo 'Assembleia Cadastrada com Sucesso!'; ?>
+                    </div>
+                    <?php
+                } else if (isset($error)) {
+                    ?>
+                    <div class="alert alert-danger">
+                        <?php echo $error; ?>
+                    </div>
+                    <?php
+                }
+                        ?>
 
         <div class="col-md-12">
                 <!-- contact info -->

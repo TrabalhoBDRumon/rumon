@@ -1,3 +1,21 @@
+<?php
+
+use Rumon\Database\Patrimonio;
+
+require_once 'adm/ClassPatrimonio.php';
+$patri = new Patrimonio();
+
+if(isset($_POST['cadastrarpatrimonio'])){
+    $patri->setNome($_POST['nomepatrimonio']);
+    $patri->setDescricao($_POST['descpatrimonio']);
+    $patri->setValor($_POST['valorpatrimonio']);
+    $patri->setMulta($_POST['multapatrimonio']);
+    $patri->insert();
+
+    $result = $patri->insert();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,10 +64,10 @@
 		<nav>
 			<ul class="menu-list">
 				<li><a href="home.html">Home</a></li>
-				<li><a href="rep.php">República</a></li>
+				<li><a href="rep.php">RepÃºblica</a></li>
 				<li><a href="pessoas.php">Pessoas</a></li>
 				<li><a href="assembleia.php">Assembleia</a></li>
-				<li class="active"><a href="patrimonio.php">Patrimônio</a></li>
+				<li class="active"><a href="patrimonio.php">PatrimÃ´nio</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -60,12 +78,28 @@
     <!-- Contact section -->
     <div class="contact-section spad fix">
         <div class="container">
+
+            <?php
+            if (isset($result)) {
+                ?>
+                <div class="alert alert-success">
+                    <?php echo 'PatrimÃ´nio Cadastrada com Sucesso!'; ?>
+                </div>
+                <?php
+            } else if (isset($error)) {
+                ?>
+                <div class="alert alert-danger">
+                    <?php echo $error; ?>
+                </div>
+                <?php
+            }
+            ?>
             
             <div class="col-md-12">
                 <!-- contact info -->
                 <div class="col-md-6">
                     <div class="section-title left">
-                        <h1>Pesquisa Patrmônio</h1>
+                        <h1>Pesquisa PatrimÃ´nio</h1>
                     </div>
                     
                     <form class="form-class" id="con_form">
@@ -111,12 +145,12 @@
                 </div>
                 <!-- contact form -->
                 <div class="col-md-6">
-                    <form class="form-class" id="con_form">
+                    <form class="form-class" id="con_form" method="post">
                         <div class="row">
                             <div class="section-title left"><h1>Cadastro de Patrimonio</h1></div>
                             <h2>Nome:</h2><div class="">
                                 <input type="text" name="nomepatrimonio">
-                            <h2>Descrição:</h2>
+                            <h2>DescriÃ§Ã£o:</h2>
                                 <textarea name="descpatrimonio"></textarea>
                             <h2>Valor:</h2>
                                 <input type="text" name="valorpatrimonio">
