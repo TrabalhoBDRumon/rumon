@@ -72,14 +72,14 @@ INSERT INTO `republica` (`r_id`, `r_nome`, `r_site`, `r_fundacao`, `r_email`, `r
 
 
 
-insert into pessoa values(null, '01234567899', 'mg11111111', 'João Carlos','M', 000001,'2018-07-11', 31998765432, 'Marmita', 'UFOP',2);
-insert into pessoa values(null, '01234567888', 'mg22222222', 'Mariano','M', 000002, '1998-08-18', 31988889999, 'Vitar', 'UEMG', 2);
-insert into pessoa values(null, '01234567877', 'mg33333333', 'Rafaela','F', 000003, '1995-09-05', 31975757575, 'Punk', 'UEMG', 3);
-insert into pessoa values(null, '01234567866', 'mg44444444', 'Patricia','F', 000004, '1997-12-07', 31997979898, 'Matraca', 'UFOP', 1);
-insert into pessoa values(null, '01234567855', 'mg55555555', 'Jose Rafael','M', 000005, '1992-04-19', 31999879654, 'Bolete', 'UFOP', 1);
-insert into pessoa values(null, '01234567844', 'mg66666666', 'Marcos','M', 000006, '1998-05-18', 31985623014, 'Bolivia', 'UEMG', 3);
-insert into pessoa values(null, '01234567833', 'mg77777777', 'Milena','F', 000007, '1996-03-10', 31993484350, 'Paraisopolis', 'UFOP', 4);
-insert into pessoa values(null, '01234567822', 'mg88888888', 'Sabrina','F', 000008, '1995-11-01', 31975240196, 'Mirna', 'UEMG', 4);
+insert into pessoa values(null, '01234567899', 'mg11111111', 'João Carlos',1, 000001,'2018-07-11', 31998765432, 'Marmita', 'UFOP',2);
+insert into pessoa values(null, '01234567888', 'mg22222222', 'Mariano',1, 000002, '1998-08-18', 31988889999, 'Vitar', 'UEMG', 2);
+insert into pessoa values(null, '01234567877', 'mg33333333', 'Rafaela',2, 000003, '1995-09-05', 31975757575, 'Punk', 'UEMG', 3);
+insert into pessoa values(null, '01234567866', 'mg44444444', 'Patricia',3, 000004, '1997-12-07', 31997979898, 'Matraca', 'UFOP', 1);
+insert into pessoa values(null, '01234567855', 'mg55555555', 'Jose Rafael',2, 000005, '1992-04-19', 31999879654, 'Bolete', 'UFOP', 1);
+insert into pessoa values(null, '01234567844', 'mg66666666', 'Marcos',3, 000006, '1998-05-18', 31985623014, 'Bolivia', 'UEMG', 3);
+insert into pessoa values(null, '01234567833', 'mg77777777', 'Milena',1, 000007, '1996-03-10', 31993484350, 'Paraisopolis', 'UFOP', 4);
+insert into pessoa values(null, '01234567822', 'mg88888888', 'Sabrina',3, 000008, '1995-11-01', 31975240196, 'Mirna', 'UEMG', 4);
 
 
 
