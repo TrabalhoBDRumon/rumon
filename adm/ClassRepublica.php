@@ -55,11 +55,10 @@ class Republica{
 
     public function setTelefone($value){
             $this->r_telefone = $value;
-        }
+    }
 
     public function insert(){
-        try{
-            $stmt = $this->conn->prepare("INSERT INTO `republica`(`r_nome`,`r_site`,`r_fundacao`,`r_email`,`r_tipo`, `r_facebook`, `r_telefone`) VALUES(:r_nome, :r_site, :r_fundacao, :r_email, :r_tipo, :r_facebook, :r_telefone");
+            $stmt = $this->conn->prepare("INSERT INTO republica (r_nome, r_site, r_fundacao, r_email, r_tipo, r_facebook, r_telefone) VALUES (:r_nome, :r_site, :r_fundacao, :r_email, :r_tipo, :r_facebook, :r_telefone)");
             $stmt->bindParam(":r_nome", $this->r_nome);
             $stmt->bindParam(":r_site", $this->r_site);
             $stmt->bindParam(":r_fundacao", $this->r_fundacao);
@@ -67,10 +66,11 @@ class Republica{
             $stmt->bindParam(":r_tipo", $this->r_tipo);
             $stmt->bindParam(":r_facebook", $this->r_facebook);
             $stmt->bindParam(":r_telefone", $this->r_telefone);
-            $stmt->execute();
+            try{
+                $stmt->execute();
             return 1;
-        }catch(PDOException $e){
-            echo $e->getMessage();
+            } catch(PDOException $e){
+                echo $e->getMessage();
             return 0;
         }
     }

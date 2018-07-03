@@ -7,7 +7,6 @@ require_once 'adm/ClassRepublica.php';
 require_once 'adm/ClassPessoa.php';
 
 function generoRep($idTipo){
-
     switch($idTipo){
         case 1:
             $genero = "Masculina";
@@ -34,8 +33,6 @@ if (isset($_POST['cadastrarrep'])) {
     $rep->setTipo($_POST['tiporep']);
     $rep->setFacebook($_POST['facerep']);
     $rep->setTelefone($_POST['telrep']);
-    $rep->insert();
-
     $result = $rep->insert();
 }
 ?>
