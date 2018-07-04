@@ -61,7 +61,7 @@ primary key(assembleia_id)
 republica_id int not null,
 id_assembleia int not null,
 FOREIGN KEY(republica_id) REFERENCES republica(r_id),
-FOREIGN KEY (id_assembleia) REFERENCES assembleia(assebleia_id)
+FOREIGN KEY (id_assembleia) REFERENCES assembleia(assembleia_id)
  );
 
 

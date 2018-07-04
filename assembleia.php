@@ -13,8 +13,6 @@ $freq = new Frequenta();
 
 if(isset($_POST['cadastroassembleia'])){
     $assem->setData($_POST['dataassembleia']);
-    $assem->insert();
-
     $result = $assem->insert();
 }
 
