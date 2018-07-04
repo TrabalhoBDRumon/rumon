@@ -25,7 +25,17 @@ class Assembleia{
     public function setData($value){
         $this->assembleia_data = $value;
     }
+    public function getData($id){
+        //$stmt = $this->conn->query("SELECT * FROM assembleia WHILE assembleia_id = '".$id."'");
+        $stmt = $this->conn->query("SELECT * FROM assembleia WHERE assembleia_id = '".$id."'");
+        $resultado = $stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach($resultado as $t){
+            return $t->assembleia_data;
+        }
 
+    }
+
+    
     public function insert(){
         try{
             $stmt = $this->conn->prepare("INSERT INTO `assembleia`(`assembleia_data`) VALUES(:assembleia_data)");
@@ -69,7 +79,7 @@ class Assembleia{
     public function view(){
         $stmt = $this->conn->prepare("SELECT * FROM `assembleia`  WHERE `assembleia_id` = :assembleia_id");
         $stmt->bindParam(":assembleia_id", $this->assembleia_id);
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;
     }
     

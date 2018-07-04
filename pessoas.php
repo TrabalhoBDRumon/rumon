@@ -149,6 +149,7 @@ if (isset($_POST['cadastrarpessoa'])) {
                                                 echo "<td>$rr->r_nome</td>;";
                                             }
                                             echo "<td>$p->p_celular</td>";
+                                            echo "</tr>";
                                         }
                                     }
                                 ?>

@@ -1,10 +1,15 @@
 <?php
 
 use Rumon\Database\Assembleia;
+use Rumon\Database\Frequenta;
+use Rumon\Database\Republica;
 
 require_once 'adm/ClassAssembleia.php';
+require_once 'adm/ClassFrequenta.php';
+require_once 'adm/ClassRepublica.php';
 
 $assem = new Assembleia();
+$freq = new Frequenta();
 
 if(isset($_POST['cadastroassembleia'])){
     $assem->setData($_POST['dataassembleia']);
@@ -99,39 +104,50 @@ if(isset($_POST['cadastroassembleia'])){
                     <div class="section-title left">
                         <h1>Pesquisa de presença </h1>
                     </div>
-                    
-                    <select id="assembleia">
-                        <option>Escolha a assembleia:</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
+                    <form class="form-class" id="con_form">
+                        <select id="assembleia" name="idassemb">
+                            <option>Escolha a assembleia:</option>
+                            <?php
+                                $assembleias = $assem->mostraAssembleias();
+                                foreach($assembleias as $ass){
+                                    echo '<option value="'.$ass->assembleia_id.'">'.$ass->assembleia_data.'</option>';
+                                }
+                            ?>
+                        </select>
+                        <div class="text-right">
+                                <button class="site-btn" name="pesquisarassembleia">Pesquisar</button>
+                        </div>
+                    </form>
                     <br><br>
-                    
+                    <?php
+                        if(isset($_GET['idassemb'])){
+                            $idassemb = $_GET['idassemb'];
+                            $freqs = $freq->view($idassemb);
+                            
+                            echo "<h2>Assembleia do dia: ".$assem->getData($idassemb)."</h2>";
+                        }
+                    ?>
                     <table class="table" style="background-color: white;">
                       <thead>
                         <tr>
-                          <th>Firstname</th>
-                          <th>Lastname</th>
-                          <th>Email</th>
+                          <th>Repúblicas Presentes</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>John</td>
-                          <td>Doe</td>
-                          <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>Mary</td>
-                          <td>Moe</td>
-                          <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>July</td>
-                          <td>Dooley</td>
-                          <td>july@example.com</td>
-                        </tr>
+                        <?php
+                        if(isset($_GET['idassemb'])){
+                            foreach($freqs as $f){
+                                $reps = New Republica();
+                                $rep = $reps->buscaRepID($f->republica_id);
+                                foreach($rep as $r){
+                                    echo "<tr>";
+                                    echo "<td> $r->r_nome</td>";
+                                    echo "<tr>";
+                                }
+                                
+                            }
+                        }
+                        ?>
                       </tbody>
                     </table>
                 </div>

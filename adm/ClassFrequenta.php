@@ -9,7 +9,7 @@ require_once "Database.php";
 
 class frequenta{
     private $republica_id;
-    private $id_assembleia;
+    public $id_assembleia;
 
 
     public function __construct()
@@ -67,13 +67,18 @@ class frequenta{
         }
     }
 
-    public function view(){
-        $stmt = $this->conn->prepare("SELECT * FROM `frequenta`  WHERE `republica_id` = :republica_id");
-        $stmt->bindParam("republica_id", $this->republica_id);
-        $row = $stmt->fetch(PDO::FETCH_OBJ);
+    public function view($idassemb){
+        $stmt = $this->conn->query("SELECT * FROM `frequenta`  WHERE `id_assembleia` = '".$idassemb."'");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+
         return $row;
     }
 
+    //public function view(){
+    //    $stmt = $this->conn->query("SELECT * FROM assembleia  WHERE assembleia_id = '".$this->assembleia_id."'");
+    //    $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+    //    return $row;
+    //}
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `frequenta` WHERE 1");
         $stmt->execute();
