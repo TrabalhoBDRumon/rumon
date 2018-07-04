@@ -122,7 +122,7 @@ class Pessoa{
     }
 
     public function buscaPessoa($apelido){
-        $stmt = $this->conn->query("SELECT p_nome, p_apelido, p_celular FROM pessoa WHERE p_apelido = '".$apelido."'");
+        $stmt = $this->conn->query("SELECT p_nome, p_apelido, p_celular, rep_id FROM pessoa WHERE p_apelido LIKE '%%".$apelido."%%'");
         //$stmt->bindParam(":p_apelido", $apelido);
         $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;

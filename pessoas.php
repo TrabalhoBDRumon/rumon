@@ -130,7 +130,8 @@ if (isset($_POST['cadastrarpessoa'])) {
                                 <tr>
                                     <th>Apelido</th>
                                     <th>Nome</th>
-                                    <th>Telefone</th>
+                                    <th>República</th>
+                                    <th>Celular</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -142,6 +143,11 @@ if (isset($_POST['cadastrarpessoa'])) {
                                             echo "<tr>";
                                             echo "<td>$p->p_apelido</td>";
                                             echo "<td>$p->p_nome</td>";
+                                            $repPessoa = new Republica();
+                                            $r = $repPessoa->buscaRepID($p->rep_id);
+                                            foreach($r as $rr){
+                                                echo "<td>$rr->r_nome</td>;";
+                                            }
                                             echo "<td>$p->p_celular</td>";
                                         }
                                     }

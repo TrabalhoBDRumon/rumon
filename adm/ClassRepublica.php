@@ -109,11 +109,16 @@ class Republica{
     }
     
     public function buscaRep($nome){
-        $stmt = $this->conn->query("SELECT r_nome, r_telefone, r_tipo, r_id FROM republica WHERE r_nome = '".$nome."'");
+        $stmt = $this->conn->query("SELECT r_nome, r_telefone, r_tipo, r_id FROM republica WHERE r_nome LIKE '%%".$nome."%%'");
         $row = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $row;
     }
 
+    public function buscaRepID($repID){
+        $stmt = $this->conn->query("SELECT r_nome, r_telefone, r_tipo, r_id FROM republica WHERE r_id = '".$repID."'");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $row;
+    }
 
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `republica` WHERE 1");

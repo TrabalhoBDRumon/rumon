@@ -73,6 +73,12 @@ class assembleia{
         $row = $stmt->fetch(PDO::FETCH_OBJ);
         return $row;
     }
+    
+    public function mostraAssembleias(){
+        $stmt = $this->conn->query("SELECT * FROM assembleia WHERE 1");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $row;
+    }
 
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `assembleia` WHERE 1");
