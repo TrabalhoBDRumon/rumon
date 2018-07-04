@@ -139,21 +139,23 @@ if(isset($_POST['cadastrarpatrimonio'])){
                       </thead>
                       <tbody>
                         <?php
-                            $aluga = New aluga();
-                            $alug = $aluga->buscaAluguel($idpatrimonio);
-                            foreach($alug as $alu){
-                                $rep = new Republica();
-                                echo "<tr>";
-                                $repu = $rep->buscaRepID($alu->id_rep_alugou);
-                                foreach($repu as $rp){
-                                    
-                                    echo "<td>".$rp->r_nome."</td>";
+                            if(isset($idpatrimonio)){
+                                $aluga = New aluga();
+                                $alug = $aluga->buscaAluguel($idpatrimonio);
+                                foreach($alug as $alu){
+                                    $rep = new Republica();
+                                    echo "<tr>";
+                                    $repu = $rep->buscaRepID($alu->id_rep_alugou);
+                                    foreach($repu as $rp){
+                                        
+                                        echo "<td>".$rp->r_nome."</td>";
+                                    }
+                                    if($alu->situacao == "S") echo "<td>Disponível</td>";
+                                    else echo "<td>Indisponível</td>";
+                                    echo "<td>".$alu->data_emprestimo."</td>";
+                                    echo "<td>".$alu->data_devolucao."</td>";
+                                    echo "</tr>";
                                 }
-                                if($alu->situacao == "S") echo "<td>Disponível</td>";
-                                else echo "<td>Indisponível</td>";
-                                echo "<td>".$alu->data_emprestimo."</td>";
-                                echo "<td>".$alu->data_devolucao."</td>";
-                                echo "</tr>";
                             }
                         ?>
                         
