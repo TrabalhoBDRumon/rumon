@@ -10,7 +10,6 @@ if(isset($_POST['cadastrarpatrimonio'])){
     $patri->setDescricao($_POST['descpatrimonio']);
     $patri->setValor($_POST['valorpatrimonio']);
     $patri->setMulta($_POST['multapatrimonio']);
-    $patri->insert();
 
     $result = $patri->insert();
 }

@@ -19,7 +19,6 @@ if (isset($_POST['cadastrarpessoa'])) {
     $pessoa->setApelido($_POST['apelidopessoa']);
     $pessoa->setFaculdade($_POST['facupessoa']);
     $pessoa->setRepID((int)$_POST['rep_id']);
-    $pessoa->insert();
 
     $result = $pessoa->insert();
 }
