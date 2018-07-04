@@ -1,0 +1,120 @@
+CREATE DATABASE rumon;
+USE rumon;
+
+CREATE TABLE republica(
+r_id int auto_increment not null,
+r_nome varchar(50) not null,
+r_site varchar(255) null,
+r_fundacao date null,
+r_email varchar(255) null,
+r_tipo char(1) not null,
+r_facebook varchar(255) not null,
+r_telefone bigint null,
+primary key(r_id)
+);
+
+CREATE TABLE pessoa(
+p_id int auto_increment not null,
+p_cpf char(11) not null,
+p_rg varchar(15) not null,
+p_nome varchar(50) not null,
+p_tipo char(1) not null,
+p_carteirinha int not null,
+p_nascimento date not null,
+p_celular bigint null,
+p_apelido varchar(50) null,
+p_faculdade varchar(100) null,
+rep_id int not null,
+primary key(p_id),
+foreign key(rep_id) REFERENCES republica(r_id)
+ );
+
+ CREATE TABLE patrimonio(
+patri_id int auto_increment not null,
+patri_nome Varchar(100) not null,
+patri_descricao text null,
+patri_valor float not null,
+patri_multa float not null,
+primary key(patri_id)
+ );
+
+ CREATE TABLE aluga(
+ aluga_id int auto_increment not null,
+ data_emprestimo date not null,
+ data_devolucao date not null,
+ situacao char(1) not null,
+ id_rep_alugou int not null,
+ id_patri_alugou int not null,
+ primary key(aluga_id),
+ FOREIGN Key(id_rep_alugou) REFERENCES republica(r_id),
+ FOREIGN KEY(id_patri_alugou) REFERENCES patrimonio(patri_id)
+ );
+
+
+CREATE TABLE assembleia(
+assembleia_id int auto_increment not null,
+assembleia_data date not null,
+primary key(assembleia_id)
+ );
+
+ CREATE TABLE frequenta(
+republica_id int not null,
+id_assembleia int not null,
+FOREIGN KEY(republica_id) REFERENCES republica(r_id),
+FOREIGN KEY (id_assembleia) REFERENCES assembleia(assebleia_id)
+ );
+
+
+INSERT INTO `republica` (`r_id`, `r_nome`, `r_site`, `r_fundacao`, `r_email`, `r_tipo`, `r_facebook`, `r_telefone`) VALUES (NULL, 'Vuco-Vuco', 'vuco.com', '2018-07-11', 'vuco@vuco.com', '1', 'facebook.com/vucojm', '31987800');
+INSERT INTO `republica` (`r_id`, `r_nome`, `r_site`, `r_fundacao`, `r_email`, `r_tipo`, `r_facebook`, `r_telefone`) VALUES (NULL, 'Tokaia', 'reptokaia.com', '2018-07-18', 'tokaia@reptokaia.com', '1', 'facebook.com/tokaia', '3187653086');
+INSERT INTO `republica` (`r_id`, `r_nome`, `r_site`, `r_fundacao`, `r_email`, `r_tipo`, `r_facebook`, `r_telefone`) VALUES (NULL, 'Erva  Doce', 'ervadoce.com', '2018-07-14', 'erva@doce.com', '3', 'facebook.com/ervadoce', '319283728372873');
+INSERT INTO `republica` (`r_id`, `r_nome`, `r_site`, `r_fundacao`, `r_email`, `r_tipo`, `r_facebook`, `r_telefone`) VALUES (NULL, 'Mada', 'mada.com', '2018-07-31', 'mada@gmail.com', '2', 'facebook.com/mada', '9283898237983793');
+
+
+
+insert into pessoa values(null, '01234567899', 'mg11111111', 'João Carlos',1, 000001,'2018-07-11', 31998765432, 'Marmita', 'UFOP',2);
+insert into pessoa values(null, '01234567888', 'mg22222222', 'Mariano',1, 000002, '1998-08-18', 31988889999, 'Vitar', 'UEMG', 2);
+insert into pessoa values(null, '01234567877', 'mg33333333', 'Rafaela',2, 000003, '1995-09-05', 31975757575, 'Punk', 'UEMG', 3);
+insert into pessoa values(null, '01234567866', 'mg44444444', 'Patricia',3, 000004, '1997-12-07', 31997979898, 'Matraca', 'UFOP', 1);
+insert into pessoa values(null, '01234567855', 'mg55555555', 'Jose Rafael',2, 000005, '1992-04-19', 31999879654, 'Bolete', 'UFOP', 1);
+insert into pessoa values(null, '01234567844', 'mg66666666', 'Marcos',3, 000006, '1998-05-18', 31985623014, 'Bolivia', 'UEMG', 3);
+insert into pessoa values(null, '01234567833', 'mg77777777', 'Milena',1, 000007, '1996-03-10', 31993484350, 'Paraisopolis', 'UFOP', 4);
+insert into pessoa values(null, '01234567822', 'mg88888888', 'Sabrina',3, 000008, '1995-11-01', 31975240196, 'Mirna', 'UEMG', 4);
+
+
+
+insert into patrimonio values(null, 'Churrasqueira','Churrasqueira de bafo de porte médio', 149.90, 5.00);
+insert into patrimonio values(null, 'Freezer','Freezer horizontal 500L', 249.90, 7.00);
+insert into patrimonio values(null, 'Geladeira','Geladeira Inox 200L', 500.00, 8.00);
+insert into patrimonio values(null, 'Fogao Industrial','Fogao industrial de 2 bocas', 200.00, 6.00);
+
+
+
+insert into aluga values (null, '2018-05-18','2018-05-23', 'S', 1, 4);
+insert into aluga values (null, '2018-05-10','2018-05-12', 'S',2, 3); 
+insert into aluga values (null, '2018-05-11','2018-05-13', 'S',3,1); 
+insert into aluga values (null, '2018-05-13','2018-05-15', 'S',4, 2);
+
+
+
+insert into assembleia values (null,'2018-05-23');
+insert into assembleia values (null,'2018-06-17');
+insert into assembleia values (null,'2018-04-15');
+insert into assembleia values (null,'2018-03-21');
+
+
+
+insert into frequenta values (1, 1); 
+insert into frequenta values (2, 1); 
+insert into frequenta values (3, 1); 
+insert into frequenta values (4, 1); 
+insert into frequenta values (1, 2); 
+insert into frequenta values (2, 2); 
+insert into frequenta values (4, 2); 
+insert into frequenta values (1, 3); 
+insert into frequenta values (2, 3); 
+insert into frequenta values (3, 4); 
+insert into frequenta values (4, 4); 
+
+
+

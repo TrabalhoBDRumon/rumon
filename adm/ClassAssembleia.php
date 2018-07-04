@@ -7,7 +7,7 @@ use \PDOException;
 
 require_once "Database.php";
 
-class assembleia{
+class Assembleia{
     private $assembleia_id;
     private $assembleia_data;
 
@@ -28,8 +28,7 @@ class assembleia{
 
     public function insert(){
         try{
-            $stmt = $this->conn->prepare("INSERT INTO `assembleia`(`assembleia_id`,`assembleia_data`) VALUES(:assembleia_id, :assembleia_data)");
-            $stmt->bindParam(":assembleia_id", $this->assembleia_id);
+            $stmt = $this->conn->prepare("INSERT INTO `assembleia`(`assembleia_data`) VALUES(:assembleia_data)");
             $stmt->bindParam(":assembleia_data", $this->assembleia_data);
 
             $stmt->execute();
