@@ -90,6 +90,20 @@ class Patrimonio{
         return $row;
     }
 
+    public function mostraPatrimonio(){
+        $stmt = $this->conn->query("SELECT * FROM patrimonio WHERE 1");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $row;
+    }
+
+    public function patrimonioID($id){
+        $stmt = $this->conn->query("SELECT * FROM patrimonio WHERE patri_id ='".$id."'");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach($row as $r){
+            return $r;
+        }
+    }
+
     public function index(){
         $stmt = $this->conn->prepare("SELECT * FROM `patrimonio` WHERE 1");
         $stmt->execute();

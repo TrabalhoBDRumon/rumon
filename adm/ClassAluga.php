@@ -97,6 +97,12 @@ class aluga{
         $stmt->execute();
         return $stmt;
     }
+
+    public function buscaAluguel($idpat){
+        $stmt = $this->conn->query("SELECT * FROM aluga WHERE id_patri_alugou = '".$idpat."'");
+        $row = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $row;
+    }
   }
 
     /*public function searchMocksByIdProfessors(){

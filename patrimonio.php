@@ -1,8 +1,14 @@
 <?php
 
 use Rumon\Database\Patrimonio;
+use Rumon\Database\Aluga;
+use Rumon\Database\Republica;
 
 require_once 'adm/ClassPatrimonio.php';
+require_once 'adm/ClassAluga.php';
+require_once 'adm/ClassRepublica.php';
+
+
 $patri = new Patrimonio();
 
 if(isset($_POST['cadastrarpatrimonio'])){
@@ -103,43 +109,55 @@ if(isset($_POST['cadastrarpatrimonio'])){
                     </div>
                     
                     <form class="form-class" id="con_form">
-                        
-                            
-                            <h2>Digite o nome:</h2><br>
-                               
-                                <input type="text" name="pesquisarnomepatrimonio" class="col-md-3">
-                            
-                            <div class="text-right">
-                                <button class="site-btn" name="botaopesquisarpatrimonio">Pesquisar</button>
-                            </div>
-                        
+                        <select name="idpatrimonio" class="col-md-3">
+                            <option>Escolha patrimônio:</option>
+                            <?php
+                                $patrimonios = $patri->mostraPatrimonio();
+                                foreach($patrimonios as $p){
+                                    echo '<option value="'.$p->patri_id.'">'.$p->patri_nome.'</option>';
+                                }
+                            ?>
+                        </select>
+                        <div class="text-right">
+                                <button class="site-btn" name="pesquisarpatrimonio">Pesquisar</button>
+                        </div>
                     </form>
-                    
-                    
+                    <?php
+                        if(isset($_GET['idpatrimonio'])){
+                            $idpatrimonio = $_GET['idpatrimonio'];
+                            $pat = $patri->patrimonioID($idpatrimonio);
+                            echo "<h3>$pat->patri_nome</h3><br><br>";
+                        }
+                    ?>
                     <table class="table" style="background-color: white;">
                       <thead>
                         <tr>
-                          <th>Firstname</th>
-                          <th>Lastname</th>
-                          <th>Email</th>
+                          <th>República</th>
+                          <th>Situação</th>
+                          <th>Emprestimo</th>
+                          <th>Devolução</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>John</td>
-                          <td>Doe</td>
-                          <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>Mary</td>
-                          <td>Moe</td>
-                          <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                          <td>July</td>
-                          <td>Dooley</td>
-                          <td>july@example.com</td>
-                        </tr>
+                        <?php
+                            $aluga = New aluga();
+                            $alug = $aluga->buscaAluguel($idpatrimonio);
+                            foreach($alug as $alu){
+                                $rep = new Republica();
+                                echo "<tr>";
+                                $repu = $rep->buscaRepID($alu->id_rep_alugou);
+                                foreach($repu as $rp){
+                                    
+                                    echo "<td>".$rp->r_nome."</td>";
+                                }
+                                if($alu->situacao == "S") echo "<td>Disponível</td>";
+                                else echo "<td>Indisponível</td>";
+                                echo "<td>".$alu->data_emprestimo."</td>";
+                                echo "<td>".$alu->data_devolucao."</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                        
                       </tbody>
                     </table>
                 </div>
